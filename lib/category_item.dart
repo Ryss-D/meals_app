@@ -10,8 +10,13 @@ class CategoryItem extends StatelessWidget {
 
   void selecCategory(BuildContext context) {
     // MaterialPageRoute allowus to managa animation and other things inerents to navigation
-    Navigator.of(context)
-        .pushNamed('/category-meals', arguments: {'id': id, 'title': title});
+    Navigator.of(context).pushNamed(
+      CategoryMealsScreen.routeName,
+      arguments: {
+        'id': id,
+        'title': title,
+      },
+    );
   }
 
   @override

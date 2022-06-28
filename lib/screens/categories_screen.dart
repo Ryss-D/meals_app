@@ -15,7 +15,7 @@ class CategoriesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         children: DUMMY_CATEGORIES
             .map(
-              (e) => CategoryItem(title: e.title, color: e.color),
+              (e) => CategoryItem(id: e.id, title: e.title, color: e.color),
             )
             .toList(),
         //Slivers is just a scrollable area on screen

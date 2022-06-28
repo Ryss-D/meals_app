@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:meals/screens/categories_screen.dart';
-import 'package:meals/screens/category_meals_screen.dart';
-import 'package:meals/screens/meals_detail_screen.dart';
+import './screens/categories_screen.dart';
+import './screens/category_meals_screen.dart';
+import './screens/meals_detail_screen.dart';
+import './screens/tabs_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         // '/' is a default home page
-        '/': (context) => CategoriesScreen(),
+        '/': (context) => TabsScreen(),
         CategoryMealsScreen.routeName: (context) => CategoryMealsScreen(),
         MealDetailScreen.routeName: (context) => MealDetailScreen(),
       },
@@ -67,10 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('DeliMeals'),
+        title: const Text('DeliMeals'),
       ),
-      body: Center(
-        child: const Text(
+      body: const Center(
+        child: Text(
           'Navigation time!',
         ),
       ),

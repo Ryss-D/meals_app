@@ -8,9 +8,9 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Widget> _pages = [
-    CategoriesScreen(),
-    FavoritesScreen(),
+  final List<Map<String, Object>> _pages = [
+    {'title': 'Categories', 'page': CategoriesScreen()},
+    {'title': 'Favorites', 'page': FavoritesScreen()},
   ];
 
   int _selectedPageIndex = 0;
@@ -29,19 +29,19 @@ class _TabsScreenState extends State<TabsScreen> {
     // child: Scaffold(
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Meals'),
-        bottom: const TabBar(
-          tabs: <Widget>[
-            Tab(
-              icon: Icon(Icons.category),
-              text: 'Categories',
-            ),
-            Tab(
-              icon: Icon(Icons.star),
-              text: 'Favorites',
-            ),
-          ],
-        ),
+        title: Text(_pages[_selectedPageIndex]['title'] as String),
+        // bottom: const TabBar(
+        //   tabs: <Widget>[
+        //     Tab(
+        //       icon: Icon(Icons.category),
+        //       text: 'Categories',
+        //     ),
+        //     Tab(
+        //       icon: Icon(Icons.star),
+        //       text: 'Favorites',
+        //     ),
+        //   ],
+        // ),
       ),
       // body: TabBarView(
       //   children: [
@@ -49,17 +49,24 @@ class _TabsScreenState extends State<TabsScreen> {
       //     FavoritesScreen(),
       // ],
       // ),
-      body: _pages[_selectedPageIndex],
+      body: _pages[_selectedPageIndex]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         backgroundColor: Theme.of(context).colorScheme.primary,
-        items: const [
+        unselectedItemColor: Colors.white,
+        selectedItemColor: Theme.of(context).colorScheme.secondary,
+        // we hav eto pas the current index infomation
+        currentIndex: _selectedPageIndex,
+        type: BottomNavigationBarType.shifting,
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.category),
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            icon: const Icon(Icons.category),
             label: 'Categories',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            icon: const Icon(Icons.favorite),
             label: 'Favorites',
           )
         ],

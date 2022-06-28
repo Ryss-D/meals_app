@@ -9,12 +9,12 @@ enum Complexity {
 enum Affordability {
   Affordable,
   Pricey,
-  Luxury,
+  Luxurious,
 }
 
 class Meal {
   final String id;
-  final List<String> categoryId;
+  final List<String> categories;
   final String title;
   final String imageUrl;
   final List<String> ingredients;
@@ -23,13 +23,13 @@ class Meal {
   final Complexity complexity;
   final Affordability affordability;
   final bool isGlutenFree;
-  final bool isLactosaFree;
+  final bool isLactoseFree;
   final bool isVegan;
   final bool isVegetarian;
 
   const Meal(
       {required this.id,
-      required this.categoryId,
+      required this.categories,
       required this.title,
       required this.imageUrl,
       required this.ingredients,
@@ -38,7 +38,7 @@ class Meal {
       required this.complexity,
       required this.affordability,
       required this.isGlutenFree,
-      required this.isLactosaFree,
+      required this.isLactoseFree,
       required this.isVegan,
       required this.isVegetarian});
 }

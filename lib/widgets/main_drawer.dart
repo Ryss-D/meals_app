@@ -45,7 +45,7 @@ class MainDrawer extends StatelessWidget {
             Icons.restaurant,
             'Meals',
             () {
-              Navigator.of(context).pushNamed('/');
+              Navigator.of(context).pushReplacementNamed('/');
             },
           ),
           const SizedBox(
@@ -55,7 +55,9 @@ class MainDrawer extends StatelessWidget {
             Icons.settings,
             'Filters',
             () {
-              Navigator.of(context).pushNamed(FilterScreen.routeName);
+              Navigator.of(context)
+                  // it clear the stack and set the route as a fresh new stack
+                  .pushReplacementNamed(FilterScreen.routeName);
             },
           )
         ],

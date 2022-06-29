@@ -9,6 +9,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   const MealItem({
     required this.id,
@@ -17,6 +18,7 @@ class MealItem extends StatelessWidget {
     required this.duration,
     required this.complexity,
     required this.affordability,
+    required this.removeItem,
   });
 
   String get complexityText {
@@ -46,10 +48,19 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(
+    Navigator.of(context)
+        .pushNamed(
       MealDetailScreen.routeName,
       arguments: id,
-    );
+    )
+        // we can use because pushNamed returns a Future when the page pushed is poped (its means retired from stack)
+        //value will be the values passed on pop
+        .then((value) {
+      if (value != null) {
+        removeItem(value);
+      }
+      print('value');
+    });
   }
 
   @override

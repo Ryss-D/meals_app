@@ -19,7 +19,7 @@ class CategoriesScreen extends StatelessWidget {
             )
             .toList(),
         //Slivers is just a scrollable area on screen
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
           crossAxisSpacing: 20,

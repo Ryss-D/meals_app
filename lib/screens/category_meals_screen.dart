@@ -7,6 +7,10 @@ import '../models/meal.dart';
 class CategoryMealsScreen extends StatefulWidget {
   static const routeName = '/category-meals';
 
+  final List<Meal> avaliableMeals;
+
+  const CategoryMealsScreen(this.avaliableMeals);
+
   @override
   State<CategoryMealsScreen> createState() => _CategoryMealsScreenState();
 }
@@ -26,10 +30,11 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   void didChangeDependencies() {
     if (!_loadedInitData) {
       final routeArgs =
+          // this is the way to use arguments passed via navigator
           ModalRoute.of(context)!.settings.arguments as Map<String, String>;
       var categoryTitle = routeArgs['title'];
       final categoryId = routeArgs['id'];
-      displayMeals = DUMMY_MEALS.where(
+      displayMeals = widget.avaliableMeals.where(
         (meal) {
           return meal.categories.contains(categoryId);
         },

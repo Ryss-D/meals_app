@@ -6,12 +6,14 @@ class CategoryItem extends StatelessWidget {
   final String title;
   final Color color;
 
-  CategoryItem({required this.id, required this.title, required this.color});
+  const CategoryItem(
+      {required this.id, required this.title, required this.color});
 
   void selecCategory(BuildContext context) {
     // MaterialPageRoute allowus to managa animation and other things inerents to navigation
     Navigator.of(context).pushNamed(
       CategoryMealsScreen.routeName,
+      //we can pass arguments via navigation
       arguments: {
         'id': id,
         'title': title,
